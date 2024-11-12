@@ -1,0 +1,15 @@
+[project]
+name = "beforreal-backend"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = [
+    "fastapi>=0.115.4",
+    "httpx>=0.27.2",
+    "pydantic>=2.9.2",
+    "pytest>=8.3.3",
+    "torch>=2.5.1",
+    "transformers>=4.46.2",
+    "uvicorn>=0.32.0",
+]
