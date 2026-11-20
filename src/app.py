@@ -1,5 +1,5 @@
 from fastapi import FastAPI, HTTPException
-from pydantic import BaseModel
+from pydantic import BaseModel, Field
 import torch
 import pickle
 from transformers import BertTokenizer, BertForSequenceClassification
@@ -31,7 +31,7 @@ model.eval()
 
 # Define input schema
 class TextInput(BaseModel):
-    sentence: str
+    sentence: str = Field(..., min_length=1)
 
 @app.post("/predict")
 async def predict_sarcasm(input: TextInput):
@@ -60,6 +60,7 @@ async def predict_sarcasm(input: TextInput):
         return {
             "prediction": label_map[prediction],
             "sarcasm_score": sarcasm_score,
+            "sarcasm": prediction == 1,
             "input_text": input.sentence
         }
     except Exception as e:

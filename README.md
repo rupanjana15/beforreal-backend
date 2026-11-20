@@ -43,7 +43,8 @@ docker run -p 8000:8000 sarcasm-detection-api
 {
   "prediction": "Sarcastic",
   "sarcasm_score": 0.87,
-  "sarcasm": true
+  "sarcasm": true,
+  "input_text": "Your input here"
 }
 ```
 
@@ -55,9 +56,10 @@ curl -X POST "http://localhost:8000/predict" -H "Content-Type: application/json"
 ## Testing
 
 ```bash
-pytest test_api.py
+# start the API first (see above), then:
+pytest tests/api_test.py
 ```
 
 ## License
 
-[MIT License](./LICENSE)
+[MIT License](./LICENSE.md)
